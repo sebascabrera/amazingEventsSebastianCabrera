@@ -1,82 +1,109 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     background: #151e21;
-    
-}
-.navbar:hover{
-    border: 2px solid #566c74f1;
-} 
-.logo{
-    margin-left: 50px;
-    }
 
-.navbar-brand{
+}
+
+.navbar:hover {
+    border: 2px solid #566c74f1;
+}
+
+.logo {
+    margin-left: 50px;
+}
+
+.navbar-brand {
     display: flex;
     flex-wrap: wrap;
 }
+
 /* *************************** MAIN *********************** */
-.display-1{
+.display-1 {
     color: #7DDFEE;
-    }
+}
 
 
-main{
+main {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
-main .form{
+main .form {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
     background: #151e21;
     padding: 2rem;
 }
-.form:hover{
+
+.form:hover {
     border: 2px solid #566c74f1;
 }
-main .form .form-check{
+
+main .form .form-check {
     margin: 0.4rem;
 }
 
-main .form .form-check .form-check-label{
+main .form .form-check .form-check-label {
     gap: 1rem;
     color: #7ddfeece;
 }
-main .form .form-serch{
+
+main .form .form-serch {
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
 }
-main .form .form-serch .form-control{
+
+main .form .form-serch .form-control {
     width: 50%;
 }
+
 /* *** CARDS *********************** */
-.cards-container{
+.cards-container {
     display: flex;
     gap: 2rem;
     justify-content: center;
     flex-wrap: wrap;
-padding: 5rem 1rem;
+    padding: 5rem 1rem;
 }
-.cards-container:hover{
+
+.cards-container:hover {
     border: 2px solid #566c74f1;
 }
-.card{
+
+.card {
     display: flex;
     width: 18rem;
 }
-.card-body{
+
+.card-body {
     display: flex;
     flex-direction: column;
-    }
-.btn-container{
+}
+
+.btn-container {
     text-align: right;
-    }
-.card-img, .card-img-bottom, .card-img-top {
+}
+
+.card-img,
+.card-img-bottom,
+.card-img-top {
     width: 100%;
     height: 10rem;
+}
+
+/* *************************** MAIN *********************** */
+footer{
+    padding: 2rem;
+}
+footer:hover {
+    border: 2px solid #566c74f1;
+}
+footer a img{
+    max-width: 3rem;
+    max-height: 3rem;
 }
