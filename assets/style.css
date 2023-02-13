@@ -6,7 +6,9 @@
     background: #151e21;
     font-family: 'Roboto Slab', serif;
 }
-
+/* header{
+    height: 10vh;
+} */
 .navbar:hover {
     border: 2px solid #566c74f1;
 }
@@ -25,7 +27,7 @@
 
 /* *************************** MAIN *********************** */
 .display-1 {
-    color: #7DDFEE;
+    color: #00c8e0;
 }
 
 
@@ -33,9 +35,10 @@ main {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-}
+   }
 
 main .form {
+    
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -102,7 +105,7 @@ main .form .form-serch .form-control {
 .card-title{
     text-align: center;
     padding-bottom: 8rem;
-    color: #7ddfeee8;
+    color: #00c8e0;
 }
 .btn-outline-info {
     --bs-btn-color: #7ddfeee8;;
