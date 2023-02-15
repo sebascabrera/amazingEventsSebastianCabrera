@@ -216,6 +216,10 @@ tbody, td, tfoot, th, thead, tr {
     width: 80%;
     align-self: center;
     }
+    .img-card{
+        display: flex;
+        justify-content: center;
+    }
 
 /* *************** mediaquery ************ */
 
