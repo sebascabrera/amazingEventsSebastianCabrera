@@ -175,7 +175,11 @@ footer .footer-h3{
     background: #7ddfeece;
 }
     
-    
+/* **********************************    Stats ************************** */
+
+.table{
+    text-align: center!important;
+}
    
 
    
