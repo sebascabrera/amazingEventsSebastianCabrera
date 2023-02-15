@@ -28,6 +28,7 @@ footer{
     padding: 2rem;
     flex-wrap: wrap;
 }
+/* ********* NAV-BAR // lOGO ********* */
 .navbar:hover {
     border: 2px solid #566c74f1;
 }
@@ -176,12 +177,33 @@ footer .footer-h3{
 }
     
 /* **********************************    Stats ************************** */
-
+.table-container{
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+    min-height: 80vh;
+    padding: 5rem;
+}
+.table-container:hover { 
+    border: 2px solid #566c74f1;
+    } 
 .table{
+    color: #7ddfeee8;
     text-align: center!important;
 }
-   
-
-   
-    
+.table-hover:hover{
+    color: #7ddfeece;
+    border-collapse: separate;
+    font-size: 1rem;
+}
+ 
+tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style:hidden;
+    border-width: 0;
+    }
+  
+.title {
+    font-size: 1.5rem;
+}
 
