@@ -207,3 +207,29 @@ tbody, td, tfoot, th, thead, tr {
     font-size: 1.5rem;
 }
 
+/* ******************** DETAILS ************* */
+.details-container{
+    display: flex;
+    flex-wrap: wrap;
+    /* max-height: 80vh; */
+    
+}
+.details-img{
+    border: 1px solid green;
+    background-image: url(./img/Museum_Tour.jpg);
+  max-width: 50%;
+  padding: 100%;
+    /* align-self: start;
+    background-size: cover;
+    min-height: 100%;
+    width: 50%;
+    padding: 0px 3%; */
+        }
+.details-text{
+    align-self: flex-end;
+    border: 1px solid yellow;
+    /* height: 100%;
+    width: 50%;
+    padding: 0px 3%; */
+   
+}
