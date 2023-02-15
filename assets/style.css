@@ -212,6 +212,10 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 /* ******************** DETAILS ************* */
+.main-details{
+    align-content: center;
+    justify-content: space-around;
+}
 .details-card{
     width: 80%;
     align-self: center;
