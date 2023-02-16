@@ -159,7 +159,14 @@ footer .footer-h3{
     color: #7ddfeee8;
 }
 /* ********************************* CONTACTS **********************/
+.form-control{
+    background: #566c74f1;
+    border: 1px solid #0a1127;
+}
 
+.form-label{
+    color:#7ddfeee8;
+}
 .label-container:hover {
     border: 2px solid #566c74f1;
 }
@@ -212,9 +219,14 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 /* ******************** DETAILS ************* */
-.main-details{
-    align-content: center;
-    justify-content: space-around;
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    list-style:none;
+    color: #7ddfeece;
 }
 .details-card{
     width: 80%;
