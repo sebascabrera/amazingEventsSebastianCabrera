@@ -13,13 +13,14 @@ body{
 }
 header{
     min-height: 10vh;
+    
 }
 main{
     min-height: 80vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-}
+    }
 
 footer{
     min-height: 10vh;
@@ -29,9 +30,6 @@ footer{
     flex-wrap: wrap;
 }
 /* ********* NAV-BAR // lOGO ********* */
-.navbar:hover {
-    border: 2px solid #566c74f1;
-}
 .navbar .gap-3{
     display: flex;
     flex-wrap: wrap;
@@ -56,31 +54,31 @@ main .form {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
-    background: #151e21;
+    background: #29383d;
     padding: 2rem;
-}
-
-.form:hover {
-    border: 2px solid #566c74f1;
 }
 
 main .form .form-check {
     margin: 0.4rem;
-}
+    background: #29383d;
+    }
 
 main .form .form-check .form-check-label {
     gap: 1rem;
-    color: #7ddfeece;
+    color: #7ddfeece;  
 }
 
-main .form .form-serch {
+main .form .form-serch  {
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
+    background: #29383d;
+    
 }
 
 main .form .form-serch .form-control {
     width: 50%;
+    
 }
 
 /* *** CARDS *********************** */
@@ -90,10 +88,6 @@ main .form .form-serch .form-control {
     justify-content: center;
     flex-wrap: wrap;
     padding: 5rem 1rem;
-}
-
-.cards-container:hover {
-    border: 2px solid #566c74f1;
 }
 
 .card {
@@ -138,9 +132,7 @@ main .form .form-serch .form-control {
     --bs-gradient: none;
 }
 /* *************************** fOOTER *********************** */
-footer:hover {
-    border: 2px solid #566c74f1;
-}
+
 footer a img{
     max-width: 3rem;
     max-height: 3rem;
@@ -167,9 +159,6 @@ footer .footer-h3{
 .form-label{
     color:#7ddfeee8;
 }
-.label-container:hover {
-    border: 2px solid #566c74f1;
-}
 .mb-3{
     width: 80%;
 }
@@ -181,12 +170,11 @@ footer .footer-h3{
     min-height: 70vh;
 }
 .material-symbols-outlined{
-    background-color: #151e21;
+    background: #29383d; 
 }
-.material-symbols-outlined:hover{
-    background: #7ddfeece;
-}
-    
+.btn-outline-info{
+    --bs-btn-hover-bg:none
+} 
 /* **********************************    Stats ************************** */
 .table-container{
     display: flex;
@@ -239,6 +227,19 @@ dl, ol, ul {
         justify-content: center;
     }
 
+  /* colores de fondo */
+  .container-fluid, .navbar-brand, .d-inline-block, .nav-buttons{
+    background: #29383d;
+  }   
+.section-query{
+    background: #29383d; 
+}
+.form-check-label{
+    background: #29383d;
+}
+footer, .footer-social, .footer-h3, h3, .img{
+    background: #29383d;
+}
 /* *************** mediaquery ************ */
 
 @media only screen and (max-width:928px) {
