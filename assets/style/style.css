@@ -282,5 +282,14 @@ main .form .form-serch {
 main .form .form-serch .form-control {
     width: 20rem;
 }
-
+footer{
+    flex-direction: column;
+    padding: 0.4rem;
+    height: 25vh;
+    align-items: center;
+}
+footer .footer-h3 {
+    padding-right: 1rem;
+   
+}
 }
