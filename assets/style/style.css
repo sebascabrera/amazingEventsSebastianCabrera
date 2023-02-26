@@ -134,6 +134,9 @@ img, svg {
     --bs-btn-disabled-border-color: #7ddfeee8;
     --bs-gradient: none;
 }
+.card-text{
+    color: #979c9cce; 
+}
 /* *************************** fOOTER *********************** */
 
 footer a img{
@@ -249,7 +252,6 @@ footer, .footer-social, .footer-h3, h3, .img{
     .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
     justify-content: center;
     width: 100%;
-/* navbar */
 
 }
 main .form {
