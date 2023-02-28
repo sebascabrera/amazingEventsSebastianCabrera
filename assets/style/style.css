@@ -99,10 +99,13 @@ main .form .form-serch .form-control {
     display: flex;
     flex-direction: column;
     min-height: 12rem;
+    justify-content: space-around;
 }
 
 .btn-container {
     text-align: right;
+    justify-content: space-evenly;
+    display: flex;
 }
 img, svg {
     max-height: 10rem;
@@ -133,6 +136,7 @@ img, svg {
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #7ddfeee8;
     --bs-gradient: none;
+   
 }
 .card-text{
     color: #979c9cce; 
