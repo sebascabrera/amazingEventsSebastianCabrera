@@ -38,13 +38,16 @@ cardContainer.appendChild(fragment)
 
  let checkContainer = document.getElementById(`checkboxes`)
  let fragment2 = document.createDocumentFragment()
+let arrsetOfEvent = new Set(data.events.map( event => event.category ))
+console.log(arrsetOfEvent);
+let arrEvent = [...arrsetOfEvent]
 
- for (let i of data.events){
+ for (let i of arrEvent){
 
      let div = document.createElement(`div`)
      div.classList.add("form-check")
      div.innerHTML = `<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-     <label class="form-check-label" for="flexCheckDefault1">${i.category}</label>`
+     <label class="form-check-label" for="flexCheckDefault1">${i}</label>`
 
      fragment2.appendChild(div)
  }
