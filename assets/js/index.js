@@ -14,7 +14,7 @@ for (let i of data.events) {
       <div class="btn-container">
           <a href="./details.html" class="btn btn-outline-info">Details</a>
         
-             <a href="./details.html" class="btn btn-outline-info">$${i.price}</a>
+             <a href="./details.html?=${i.id}" class="btn btn-outline-info">$${i.price}</a>
            
       </div>
 
@@ -29,6 +29,10 @@ cardContainer.appendChild(fragment)
 // let inputText = document.getElementById('text-input')
 // inputText.addEventListener('keyup', (event)=>{
 //     console.log(inputText.value)
+// let nombre = lista de Input.fine(nombre =>{
+//     nombre.serch(e.target.value)
+//     retur nombre.toLowerCase().serch(e.target.value.toLowerCase().trim() ) !=1
+// } )
     
 // })
 
@@ -52,3 +56,4 @@ let arrEvent = [...arrsetOfEvent]
      fragment2.appendChild(div)
  }
  checkContainer.appendChild(fragment2)
+

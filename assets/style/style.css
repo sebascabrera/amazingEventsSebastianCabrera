@@ -243,6 +243,7 @@ dl, ol, ul {
   }   
 .section-query{
     background: #29383d; 
+    display: flex;
 }
 .form-check-label{
     background: #29383d;
@@ -250,6 +251,17 @@ dl, ol, ul {
 footer, .footer-social, .footer-h3, h3, .img{
     background: #29383d;
 }
+.form-serch{
+    min-width: 40%;
+    align-items: center;
+    display: flex;
+    background: #29383d;
+    padding: 2rem;
+}
+main .form {
+    align-items: center;
+    justify-content: center;
+   }
 /* *************** mediaquery ************ */
 
 @media only screen and (max-width:928px) {
@@ -258,9 +270,7 @@ footer, .footer-social, .footer-h3, h3, .img{
     width: 100%;
 
 }
-main .form {
-     align-items: center;
-    }
+
 main .form .form-serch {
     justify-content: center;
     align-items: center;
