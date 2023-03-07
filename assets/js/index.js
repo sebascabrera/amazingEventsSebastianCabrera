@@ -12,9 +12,9 @@ for (let i of data.events) {
       <h5 class="card-title" id="card-title">${i.name}</h5>
       <p class="card-text">${i.description}</p>
       <div class="btn-container">
-          <a href="./details.html" class="btn btn-outline-info">Details</a>
+          <a href="./details.html?id=${i._id}" class="btn btn-outline-info">Details</a>
         
-             <a href="./details.html?=${i.id}" class="btn btn-outline-info">$${i.price}</a>
+             <a href="./details.html" class="btn btn-outline-info">$${i.price}</a>
            
       </div>
 
@@ -50,10 +50,23 @@ let arrEvent = [...arrsetOfEvent]
 
      let div = document.createElement(`div`)
      div.classList.add("form-check")
-     div.innerHTML = `<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+     div.innerHTML = `<input class="form-check-input" type="checkbox" value="${i} " id="flexCheckDefault1">
      <label class="form-check-label" for="flexCheckDefault1">${i}</label>`
 
      fragment2.appendChild(div)
  }
  checkContainer.appendChild(fragment2)
+// 
+let checkboxes = document.querySelectorAll('input[type=checkbox]')
+console.log(checkboxes);
 
+checkboxes.forEach(checkbox => {checkbox.addEventListener('change', selected)} )
+
+// tengo el array de checkboxes capturados
+function selected() {
+let checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
+console.log(checkedInputs);
+let vble = data.events.filter(model => checkedInputs.includes(model.category) ) 
+console.log(vble);
+
+}
