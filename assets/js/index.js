@@ -66,7 +66,7 @@ checkboxes.forEach(checkbox => {checkbox.addEventListener('change', selected)} )
 function selected() {
 let checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
 console.log(checkedInputs);
-let vble = data.events.filter(model => checkedInputs.includes(model.category) ) 
+let vble = data.events.filter(model => checkedInputs.includes(model.category)) 
 console.log(vble);
 
 }
