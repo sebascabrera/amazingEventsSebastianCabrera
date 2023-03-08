@@ -83,7 +83,7 @@ function selected() {
     
     checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
 console.log(checkedInputs);
-    let vble = filterArray(checkedInputs, data.events)
+    let vble = filterArray(checkedInputs, data.events) // agregar a la funcion de filtro cruzado
   
    showCard(vble, cardContainer)
 }
@@ -109,9 +109,19 @@ console.log(checkedInputs);
 // // })
 
 let inputText = document.getElementById('text-input')
-
+let sercher = ""
 inputText.addEventListener('keyup', (e) => {
-    e.preventDefault();
-    let sercher = e.target.value;
-    console.log(sercher);
+    //e.preventDefault(); 
+    sercher = e.target.value;
+    console.log(sercher); // aca va el llamado de funcion combinada
+    // readerSercher(sercher, data.events)
+    // console.log(readerSercher(sercher, data.events));
+    // showCard(readerSercher(sercher, data.events),cardContainer) // filtra solo con el serch
 })
+
+function readerSercher(textInput, listCard) {
+    if (textInput == "") return listCard
+    return listCard.filter(card => card.name.toLowerCase().includes(textInput.toLowerCase().trim()))       
+    
+}
+
