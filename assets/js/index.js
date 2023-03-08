@@ -1,15 +1,19 @@
 // let cardTitle = document.getElementById(`cardid`)
 // console.log(cardTitle);
 
-let cardContainer = document.getElementById('cardid')
+
 
 //la funcion para que pinte las cartas
 //le pasamos el listado de cartas
-function showCard(idContainer, contenedor) {
+let cardContainer = document.getElementById('cardid')
+function showCard(arr , container) {
+    
+   
     let fragment = document.createDocumentFragment()
-    for (let i of idContainer) {
+    container.innerHTML = ''
+    for (let i of arr) {
         let div = document.createElement(`div`)
-        contenedor.innerHTML = '';
+        
         div.classList.add("card")
         div.innerHTML = `<img src=${i.image}class="card-img-top" alt="cinema">
       <div class="card-body">
@@ -25,67 +29,84 @@ function showCard(idContainer, contenedor) {
       </div>`
         fragment.appendChild(div)
     }
-    contenedor.appendChild(fragment)
+    container.appendChild(fragment)
 }
 
 showCard(data.events, cardContainer)
 
 
-//////--------------------------------------------------------------------///////////////////////////////////////
-
-
-
-///////////////---------------------------/////////////////////////
 
 //////////////////traer los check///////////////////
 
-let checkContainer = document.getElementById(`checkboxes`)
-let fragment2 = document.createDocumentFragment()
-let arrsetOfEvent = new Set(data.events.map(event => event.category))
-console.log(arrsetOfEvent);
-let arrEvent = [...arrsetOfEvent]
+ let checkContainer = document.getElementById(`checkboxes`)
+ let fragment2 = document.createDocumentFragment()
+ let arrsetOfEvent = new Set(data.events.map(event => event.category))
 
-for (let i of arrEvent) {
+ let arrEvent = [...arrsetOfEvent]
 
-    let div = document.createElement(`div`)
-    div.classList.add("form-check")
-    div.innerHTML = `<input class="form-check-input" type="checkbox" value="${i} " id="flexCheckDefault1">
-     <label class="form-check-label" for="flexCheckDefault1">${i}</label>`
+ for (let i of arrEvent) {
 
-    fragment2.appendChild(div)
-}
-checkContainer.appendChild(fragment2)
-// 
+     let div = document.createElement(`div`)
+     div.classList.add("form-check")
+     div.innerHTML = `<input class="form-check-input" type="checkbox" value="${i}" id="flexCheckDefault1">
+      <label class="form-check-label" for="flexCheckDefault1">${i}</label>`
+
+     fragment2.appendChild(div)
+ }
+ checkContainer.appendChild(fragment2) 
+// // /////////////////////////////////////
+function filterArray(arrayString, listCard) {
+
+//return arrayString.length > 0? listCard.filter(events => arrayString.includes(events.category)):listCard;
+
+  
+    if (arrayString.length == 0){
+        
+        return listCard
+    }else {
+        
+      return listCard.filter(events => arrayString.includes(events.category))
+      
+    }
+ }
+
+let checkedInputs = []
+
 let checkboxes = document.querySelectorAll('input[type=checkbox]')
-console.log(checkboxes);
+
 
 checkboxes.forEach(checkbox => checkbox.addEventListener('change', selected))
 
-// tengo el array de checkboxes capturados
+//tengo el array de checkboxes capturados
+
 function selected() {
-    let checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
-
-    let vble = filterArray()
-    showCard(vble, cardContainer)
+    
+    checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
+console.log(checkedInputs);
+    let vble = filterArray(checkedInputs, data.events)
+  
+   showCard(vble, cardContainer)
 }
 
-function filterArray(arrayString, arrayObject) {
-    if (arrayString.lenght === 0){
-        return arrayObject
-    }else {
-        let newArray = arrayObject.filter(e => arrayString.includes(e.events))
-    }
-}
-//////////////// capturar 
-// let inputText = document.getElementById('text-input')
-// inputText.addEventListener('keyup', (event)=>{
-//     console.log(inputText.value)
-// let nombre = lista de Input.fine(nombre =>{
-//     nombre.serch(e.target.value)
-//     retur nombre.toLowerCase().serch(e.target.value.toLowerCase().trim() ) !=1
-// } )
 
-// })
+
+
+
+
+
+
+
+
+// //////////////// capturar 
+// // let inputText = document.getElementById('text-input')
+// // inputText.addEventListener('keyup', (event)=>{
+// //     console.log(inputText.value)
+// // let nombre = lista de Input.fine(nombre =>{
+// //     nombre.serch(e.target.value)
+// //     retur nombre.toLowerCase().serch(e.target.value.toLowerCase().trim() ) !=1
+// // } )
+
+// // })
 
 let inputText = document.getElementById('text-input')
 
