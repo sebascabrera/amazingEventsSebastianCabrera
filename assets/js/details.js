@@ -26,13 +26,13 @@ function cardCreator() {
       <div class="card-body">
         <h2 class="card-title fs-1 fw-bold text-center">${cardObject.name}</h2>
         <ul>
-          <li>${cardObject.date}</li>
-          <li>${cardObject.description}</li>
-          <li>${cardObject.category}</li>
-          <li>${cardObject.place}</li>
-          <li>${cardObject.capacity}</li>
-          <li>${cardObject.assistence}</li>
-          <li>${cardObject.price}</li>
+          <li><p>Date:</p> ${ cardObject.date}</li>
+          <li><p>Description:</p> ${ cardObject.description}</li>
+          <li><p>Category:</p> ${ cardObject.category}</li>
+          <li><p>Place:</p>${ cardObject.place}</li>
+          <li><p>Capacity:</p>${ cardObject.capacity}</li>
+          <li><p>Assistence:</p>${cardObject.assistance? cardObject.assistance : cardObject.estimate}</li>
+          <li><p>Price:</p>${ cardObject.price}</li>
         </ul>
       </div>
     </div>
