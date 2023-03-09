@@ -24,7 +24,8 @@ function showCard(arr, container) {
         container.innerHTML = ''
         let div = document.createElement('div')
                div.innerHTML = ` <div class="card-body">
-          <h5 class="card-title">There is nothing to show you, try again</h5>        
+          <h5 class="card-title">There is nothing to show you, try again!!</h5>  
+          <img src="https://media.tenor.com/Mr9ZiphI4JgAAAAM/vegeta-db.gif" alt="" srcset="">          
       </div>`
       container.appendChild(div) 
     }
