@@ -96,3 +96,8 @@ function combineFilters(array) {
     let stringFilter = readerSercher(sercher, cardFilterArray);
     showCard(stringFilter, cardContainer)
 }
+buttonRefresh.addEventListener('click', refresh)
+function refresh() {
+
+    location.reload()
+}

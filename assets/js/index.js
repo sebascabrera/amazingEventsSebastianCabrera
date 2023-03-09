@@ -95,3 +95,10 @@ function combineFilters(array) {
     showCard(stringFilter, cardContainer)
 }
 
+let buttonRefresh = document.getElementById(`refresh`)
+
+buttonRefresh.addEventListener('click', refresh)
+function refresh() {
+
+    location.reload()
+}
