@@ -60,8 +60,11 @@ main .form {
     flex-wrap: wrap;
     align-items: flex-end;
     background: #29383d;
-    padding: 2rem;
-}
+    padding: 0.5rem;
+          align-items: center;
+        justify-content: center;
+    }
+
 
 main .form .form-check {
     margin: 0.4rem;
@@ -304,6 +307,8 @@ ul {
 .section-query {
     background: #29383d;
     display: flex;
+    flex-wrap: wrap;
+    
 }
 
 .form-check-label {
@@ -326,10 +331,7 @@ h3,
     padding: 2rem;
 }
 
-main .form {
-    align-items: center;
-    justify-content: center;
-}
+
 
 /* *************** mediaquery ************ */
 

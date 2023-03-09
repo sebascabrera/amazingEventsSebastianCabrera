@@ -1,29 +1,28 @@
-//let cardContainer = document.getElementById('cardpast')
-let currentDt = parseInt(data.currentDate)
-
-
-let cardContainer = document.getElementById('cardpast')
+// let cardTitle = document.getElementById(`cardid`)
+// console.log(cardTitle);
+//la funcion para que pinte las cartas
+//le pasamos el listado de cartas
+let cardContainer = document.getElementById('cardid')
 function showCard(arr, container) {
-    if (arr.length > 0) {
+    if ( arr.length > 0){
         let fragment = document.createDocumentFragment()
         container.innerHTML = ''
         for (let i of arr) {
-            let iDate = parseInt(i.date)
-            if (currentDt > iDate) {
-                let div = document.createElement(`div`)
-                div.classList.add("card")
-                div.innerHTML = `<img src=${i.image}class="card-img-top" alt="cinema">
-        <div class="card-body">
-            <h5 class="card-title" id="card-title">${i.name}</h5>
-            <p class="card-text">${i.description}</p>
-            <div class="btn-container">
-                <a href="./details.html" class="btn btn-outline-info">Details</a>
-            </div>
-        </div>`
-                fragment.appendChild(div)
-            }
+            let div = document.createElement(`div`)
+    
+            div.classList.add("card")
+            div.innerHTML = `<img src=${i.image}class="card-img-top" alt="cinema">
+          <div class="card-body">
+              <h5 class="card-title" id="card-title">${i.name}</h5>
+              <p class="card-text">${i.description}</p>
+              <div class="btn-container">
+                  <a href="./details.html?id=${i._id}" class="btn btn-outline-info">Details</a>
+                                 <a href="./details.html" class="btn btn-outline-info">$${i.price}</a>
+              </div>
+          </div>`
+            fragment.appendChild(div)
         }
-        cardContainer.appendChild(fragment)
+        container.appendChild(fragment)      
     }
     else{
         container.innerHTML = ''
@@ -31,26 +30,27 @@ function showCard(arr, container) {
                div.innerHTML = ` <div class="card-body">
           <h5 class="card-title">There is nothing to show you, try again</h5>        
       </div>`
-      container.appendChild(div)  
+      container.appendChild(div) 
     }
+ 
 }
 showCard(data.events, cardContainer)
+
+
 
 let checkContainer = document.getElementById(`checkboxes`)
 let fragment2 = document.createDocumentFragment()
 let arrsetOfEvent = new Set(data.events.map(event => event.category))
-
 let arrEvent = [...arrsetOfEvent]
 
 for (let i of arrEvent) {
-
     let div = document.createElement(`div`)
     div.classList.add("form-check")
     div.innerHTML = `<input class="form-check-input" type="checkbox" value="${i}" id="flexCheckDefault1">
       <label class="form-check-label" for="flexCheckDefault1">${i}</label>`
-
     fragment2.appendChild(div)
 }
+
 checkContainer.appendChild(fragment2)
 
 function filterArray(arrayString, listCard) {
@@ -66,21 +66,26 @@ let checkedInputs = []
 let checkboxes = document.querySelectorAll('input[type=checkbox]')
 checkboxes.forEach(checkbox => checkbox.addEventListener('change', selected))
 
-
+//tengo el array de checkboxes capturados
 function selected() {
 
     checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
     console.log(checkedInputs);
+  //  let vble = filterArray(checkedInputs, data.events)
 
+    //showCard(vble, cardContainer) // muestra las card con filtro de check
     combineFilters(data.events)
 }
-
+//////////////// filtro de serch
 let inputText = document.getElementById('text-input')
 let sercher = ""
 inputText.addEventListener('keyup', (e) => {
-
+    //e.preventDefault(); 
     sercher = e.target.value;
-    console.log(sercher);
+    console.log(sercher); // aca va el llamado de funcion combinada
+    // readerSercher(sercher, data.events)
+    // console.log(readerSercher(sercher, data.events));
+    // showCard(readerSercher(sercher, data.events),cardContainer) // filtra solo con el serch
     combineFilters(data.events)
 })
 
@@ -89,10 +94,21 @@ function readerSercher(textInput, listCard) {
     return listCard.filter(card => card.name.toLowerCase().includes(textInput.toLowerCase().trim()))
 
 }
-
+////////////// filtro combinado
 function combineFilters(array) {
 
     let cardFilterArray = filterArray(checkedInputs, array);
     let stringFilter = readerSercher(sercher, cardFilterArray);
     showCard(stringFilter, cardContainer)
 }
+
+// //////////////// capturar
+// // let inputText = document.getElementById('text-input')
+// // inputText.addEventListener('keyup', (event)=>{
+// //     console.log(inputText.value)
+// // let nombre = lista de Input.fine(nombre =>{
+// //     nombre.serch(e.target.value)
+// //     retur nombre.toLowerCase().serch(e.target.value.toLowerCase().trim() ) !=1
+// // } )
+
+// // })
