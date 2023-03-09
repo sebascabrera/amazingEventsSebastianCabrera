@@ -13,7 +13,7 @@ function showCard(arr, container) {
               <p class="card-text">${i.description}</p>
               <div class="btn-container">
                   <a href="./details.html?id=${i._id}" class="btn btn-outline-info">Details</a>
-                                 <a href="./details.html" class="btn btn-outline-info">$${i.price}</a>
+                   <div> <p>$ ${i.price}</p></div>               
               </div>
           </div>`
             fragment.appendChild(div)

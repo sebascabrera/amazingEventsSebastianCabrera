@@ -114,8 +114,11 @@ main .form .form-serch .form-control {
     text-align: right;
     justify-content: space-evenly;
     display: flex;
+    align-items: baseline;
 }
-
+.btn-container p{
+    color: coral;
+}
 img,
 svg {
     max-height: 10rem;
@@ -130,7 +133,7 @@ svg {
 
 .card-title {
     text-align: center;
-    padding-bottom: 8rem;
+    padding-bottom: 4rem;
     color: #00c8e0;
 }
 
@@ -261,8 +264,14 @@ ul {
     flex-direction: column;
     list-style: none;
     color: #7ddfeece;
+    padding: 1rem;
 }
-
+ul{
+    border: 2px solid;
+}
+#li-description{
+    text-align: center;
+}
 .details-card {
     width: 80%;
     align-self: center;
@@ -330,7 +339,12 @@ h3,
     background: #29383d;
     padding: 2rem;
 }
-
+li{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 
 
 /* *************** mediaquery ************ */
