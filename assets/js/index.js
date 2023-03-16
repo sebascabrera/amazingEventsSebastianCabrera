@@ -1,6 +1,7 @@
 
 const url = "https://mindhub-xj03.onrender.com/api/amazing"
 async function obtaindata(url) {
+    
     try {
 
         let response = await fetch(url)// trae promesa
@@ -17,23 +18,28 @@ async function obtaindata(url) {
         showCheck(arrEvent, checkContainer)
 
         //cheks
-
+        let sercher = ""
         let checkboxes = document.querySelectorAll('input[type=checkbox]')
         let checkedInputs = []
-        checkboxes.forEach(checkbox => checkbox.addEventListener('change', ()=> { checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
-            let sercher = ""
-            combineFilters(data.events, checkedInputs, sercher, cardContainer )} ))
+        checkboxes.forEach(checkbox => checkbox.addEventListener('change', () => {
+            checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
+
+            combineFilters(data.events, checkedInputs, sercher, cardContainer)
+        }))
 
         // serch 
 
         let inputText = document.getElementById('text-input')
-               inputText.addEventListener('keyup', (e) => {
+        inputText.addEventListener('keyup', (e) => {
 
             sercher = e.target.value;
-            combineFilters(data.events, checkedInputs, sercher, cardContainer )
+            combineFilters(data.events, checkedInputs, sercher, cardContainer)
 
         })
 
+        let buttonRefresh = document.getElementById('refresh')
+        buttonRefresh.addEventListener('click', location.reload() )
+     
     }
     catch (error) {
         console.error(error);
@@ -64,7 +70,7 @@ function showCard(arr, container) {
             let div = document.createElement(`div`)
 
             div.classList.add("card")
-            div.innerHTML = `<img src=${i.image}class="card-img-top" alt="cinema">
+            div.innerHTML = `<img src=${i.image}class="card-img-top" alt="Event image">
           <div class="card-body">
               <h5 class="card-title" id="card-title">${i.name}</h5>
               <p class="card-text">${i.description}</p>
@@ -99,25 +105,11 @@ function filterArray(arrayString, listCard) {
     }
 }
 
-
-
-
-
-let inputText = document.getElementById('text-input')
-let sercher = ""
-inputText.addEventListener('keyup', (e) => {
-
-    sercher = e.target.value;
-    console.log(sercher);
-
-})
-
 function readerSercher(textInput, listCard) {
     if (textInput == "") return listCard
     return listCard.filter(card => card.name.toLowerCase().includes(textInput.toLowerCase().trim()))
-   
+
 }
-console.log(readerSercher());
 
 function combineFilters(array, arrayChecked, textSerch, container) {
 
@@ -126,8 +118,4 @@ function combineFilters(array, arrayChecked, textSerch, container) {
     showCard(stringFilter, container)
 }
 
-let buttonRefresh = document.getElementById(`refresh`)
-buttonRefresh.addEventListener('click', refresh)
-function refresh() {
-    location.reload()
-}
+
