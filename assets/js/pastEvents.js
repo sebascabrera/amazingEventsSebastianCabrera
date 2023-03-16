@@ -1,5 +1,3 @@
-
-
 const url = "https://mindhub-xj03.onrender.com/api/amazing"
 
 async function obtaindata(url) {
@@ -85,4 +83,25 @@ function showCheck(array, container) {
         fragment2.appendChild(div)
     }
     container.appendChild(fragment2)
+}
+function filterArray(arrayString, listCard) {
+    //return arrayString.length > 0? listCard.filter(events => arrayString.includes(events.category)):listCard;
+    if (arrayString.length == 0) {
+        return listCard
+    } else {
+        return listCard.filter(events => arrayString.includes(events.category))
+    }
+}
+
+function readerSercher(textInput, listCard) {
+    if (textInput == "") return listCard
+    return listCard.filter(card => card.name.toLowerCase().includes(textInput.toLowerCase().trim()))
+
+}
+
+function combineFilters(array, arrayChecked, textSerch, container) {
+
+    let cardFilterArray = filterArray(arrayChecked, array);
+    let stringFilter = readerSercher(textSerch, cardFilterArray);
+    showCard(stringFilter, container)
 }
