@@ -8,10 +8,12 @@ async function obtaindata(urlparam) {
         let arrEvent = data.events
         let tblContainer = document.getElementById('firstTable')
         createTable(arrEvent, tblContainer)
-
-
+        let arrEventFuture = arrEvent.filter(element => element.estimate)
+        let arrEventPast = arrEvent.filter(element => element.assistance)
         let sndTblContainer = document.getElementById('secondTable')
-        createSecondTable(arrEvent, sndTblContainer)
+        createSndTrdTable(arrEventFuture, sndTblContainer)
+        let trdTblContainer = document.getElementById('thirdTable')
+        createSndTrdTable(arrEventPast, trdTblContainer)
         renueves(arrEvent)
     }
     catch (error) {
@@ -32,7 +34,7 @@ function createTable(arr, container) {
             return b
         }
     })
-    bestAttendancePercent = bestAttendance.assistance / bestAttendance.capacity * 100
+    let bestAttendancePercent = bestAttendance.assistance / bestAttendance.capacity * 100
 
     // console.log(bestAttendance);
     let lowerAttendance = arr.filter(elemento => elemento.assistance).reduce((a, b) => {
@@ -61,38 +63,48 @@ function createTable(arr, container) {
 //            return console.log(element); 
 //         }
 //     }
-    
+
 
 // }
 
-function createSecondTable(arr, container) {
+function createSndTrdTable(arr, container) {
 
-let renueves = arr.map(element => element.category)
-// .reduce((a,b) =>{
-//     if(a.assistance===b.assistance){
-//         let acc=[];
-//         acc += a.assistance * a.price
-//         return acc
-//     }
-//     else{
-//         return acc
-//     }
-// })
-console.log(renueves);
+
 
     let fragment2 = document.createDocumentFragment()
     let arrsetOfEvent = new Set(arr.map(event => event.category))
-    
-    let NewarrEvent = [...arrsetOfEvent]
-    console.log(NewarrEvent);
 
-    for (let i of NewarrEvent) {
+    let newarrEvent = [...arrsetOfEvent]
+    console.log(newarrEvent);
+
+    for (let category of newarrEvent) {
+
+        let revenue = getRevenues(arr, category)
+        let percentages = getPercentage(arr, category)
         let tr = document.createElement('tr')
-        tr.innerHTML = ''
-        tr.innerHTML = `<td>${i} </td>
-    <td> </td>
-    <td></td>`
+        tr.innerHTML = `<td>${category} </td>
+    <td>$ ${revenue} </td>
+    <td>${percentages} </td>`
         fragment2.appendChild(tr)
     }
     container.appendChild(fragment2)
+}
+function getRevenues(arr, category) {
+
+    let renueves = arr.filter(element => element.category == category).reduce((acc, element) => {
+
+        return acc += (element.assistance ? element.assistance : element.estimate) * element.price
+
+    }, 0)
+    return renueves
+}
+
+function getPercentage(arr, category) {
+
+    let percentage = arr.filter(element => element.category == category).reduce((acc, element) => {
+
+        return acc  + (element.assistance ? element.assistance : element.estimate).length /100
+
+    }, 0)
+    return percentage
 }
