@@ -56,17 +56,6 @@ function createTable(arr, container) {
 
 }
 
-// function renueves(params) {
-//     for (const i in params) {
-//         if (i.assistance != undefined) {
-//             const element = params.price * params.assistance;
-//            return console.log(element); 
-//         }
-//     }
-
-
-// }
-
 function createSndTrdTable(arr, container) {
 
 
@@ -84,11 +73,12 @@ function createSndTrdTable(arr, container) {
         let tr = document.createElement('tr')
         tr.innerHTML = `<td>${category} </td>
     <td>$ ${revenue} </td>
-    <td>${percentages} </td>`
+    <td>${percentages.toFixed(2)} % </td>`
         fragment2.appendChild(tr)
     }
     container.appendChild(fragment2)
 }
+
 function getRevenues(arr, category) {
 
     let renueves = arr.filter(element => element.category == category).reduce((acc, element) => {
@@ -101,10 +91,12 @@ function getRevenues(arr, category) {
 
 function getPercentage(arr, category) {
 
-    let percentage = arr.filter(element => element.category == category).reduce((acc, element) => {
+    let filterArr = arr.filter(element => element.category == category)
+    let percentage = filterArr.reduce((acc, element) => {
 
-        return acc  + (element.assistance ? element.assistance : element.estimate).length /100
+
+        return acc  += (element.assistance ? element.assistance : element.estimate) *100 / element.capacity
 
     }, 0)
-    return percentage
+    return percentage / filterArr.length
 }
