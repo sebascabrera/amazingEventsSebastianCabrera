@@ -232,7 +232,7 @@ footer .footer-h3 {
 
 .table-hover:hover {
     color: #7ddfeece;
-    border-collapse: separate;
+    /*border-collapse:*/ 
     font-size: 1rem;
 }
 

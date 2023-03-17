@@ -74,6 +74,7 @@ function createSndTrdTable(arr, container) {
         tr.innerHTML = `<td>${category} </td>
     <td>$ ${revenue} </td>
     <td>${percentages.toFixed(2)} % </td>`
+
         fragment2.appendChild(tr)
     }
     container.appendChild(fragment2)
@@ -94,8 +95,7 @@ function getPercentage(arr, category) {
     let filterArr = arr.filter(element => element.category == category)
     let percentage = filterArr.reduce((acc, element) => {
 
-
-        return acc  += (element.assistance ? element.assistance : element.estimate) *100 / element.capacity
+        return acc += (element.assistance ? element.assistance : element.estimate) * 100 / element.capacity
 
     }, 0)
     return percentage / filterArr.length
