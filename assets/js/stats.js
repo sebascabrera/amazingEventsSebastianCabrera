@@ -23,9 +23,7 @@ async function obtaindata(urlparam) {
 obtaindata(url)
 
 function createTable(arr, container) {
-
     let bestCapacity = arr.sort((a, b) => b.capacity - a.capacity)
-
     let bestAttendance = arr.filter(elemento => elemento.assistance).reduce((a, b) => {
         if ((a.assistance / a.capacity) > (b.assistance / b.capacity)) {
             return a
@@ -51,52 +49,36 @@ function createTable(arr, container) {
     tr.innerHTML = `<td>${bestAttendance.name}  (${bestAttendancePercent.toFixed(2)}%)</td>
             <td>${lowerAttendance.name}  (${lowerAttendancePercent.toFixed(2)}%)</td>
             <td>${bestCapacity[0].name}  (${bestCapacity[0].capacity})</td>`
-
     container.appendChild(tr)
-
 }
-
 function createSndTrdTable(arr, container) {
-
-
-
     let fragment2 = document.createDocumentFragment()
     let arrsetOfEvent = new Set(arr.map(event => event.category))
-
     let newarrEvent = [...arrsetOfEvent]
     console.log(newarrEvent);
-
     for (let category of newarrEvent) {
-
         let revenue = getRevenues(arr, category)
         let percentages = getPercentage(arr, category)
         let tr = document.createElement('tr')
         tr.innerHTML = `<td>${category} </td>
     <td>$ ${revenue} </td>
     <td>${percentages.toFixed(2)} % </td>`
-
         fragment2.appendChild(tr)
     }
     container.appendChild(fragment2)
 }
 
 function getRevenues(arr, category) {
-
     let renueves = arr.filter(element => element.category == category).reduce((acc, element) => {
-
         return acc += (element.assistance ? element.assistance : element.estimate) * element.price
-
     }, 0)
     return renueves
 }
 
 function getPercentage(arr, category) {
-
     let filterArr = arr.filter(element => element.category == category)
     let percentage = filterArr.reduce((acc, element) => {
-
         return acc += (element.assistance ? element.assistance : element.estimate) * 100 / element.capacity
-
     }, 0)
     return percentage / filterArr.length
 }

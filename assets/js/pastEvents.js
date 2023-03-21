@@ -5,12 +5,10 @@ async function obtaindata(url) {
     try {
         let response = await fetch(url)
         const data = await response.json()
-
         let currentDt = new Date(data.currentDate)
         let dataDate = data.events.filter(env => new Date(env.date) < currentDt)
         let cardContainer = document.getElementById('cardpast')
         showCard(dataDate, cardContainer)
-
         //cheks
         let checkContainer = document.getElementById(`checkboxes`)
         let arrsetOfEvent = new Set(data.events.map(event => event.category))
@@ -22,18 +20,14 @@ async function obtaindata(url) {
         let checkedInputs = []
         checkboxes.forEach(checkbox => checkbox.addEventListener('change', () => {
             checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
-
             combineFilters(data.events, checkedInputs, sercher, cardContainer)
         }))
         // serch 
         let inputText = document.getElementById('text-input')
         inputText.addEventListener('keyup', (e) => {
-
             sercher = e.target.value;
             combineFilters(data.events, checkedInputs, sercher, cardContainer)
-
         })
-
         let buttonRefresh = document.getElementById('refresh')
         buttonRefresh.addEventListener('click', location.reload())
     }
@@ -42,7 +36,6 @@ async function obtaindata(url) {
     }
 }
 obtaindata(url)
-
 function showCard(arr, container) {
     if (arr.length > 0) {
         let fragment = document.createDocumentFragment()
@@ -96,11 +89,9 @@ function filterArray(arrayString, listCard) {
 function readerSercher(textInput, listCard) {
     if (textInput == "") return listCard
     return listCard.filter(card => card.name.toLowerCase().includes(textInput.toLowerCase().trim()))
-
 }
 
 function combineFilters(array, arrayChecked, textSerch, container) {
-
     let cardFilterArray = filterArray(arrayChecked, array);
     let stringFilter = readerSercher(textSerch, cardFilterArray);
     showCard(stringFilter, container)

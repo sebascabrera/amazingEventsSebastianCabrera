@@ -1,7 +1,6 @@
 const queryString = location.search
 const params = new URLSearchParams(queryString)
 const ids = params.get("id")
-
 const url = "https://mindhub-xj03.onrender.com/api/amazing"
 async function obtaindata(urlDirection) {
   console.log(ids);
@@ -10,7 +9,6 @@ async function obtaindata(urlDirection) {
     const data = await response.json()
     const cardObject = data.events.find(event => event._id == ids)
     cardCreator(cardObject)
-   
   }
   catch (error) {
     console.error(error);
@@ -18,7 +16,6 @@ async function obtaindata(urlDirection) {
 }
 //const cardObject = data.events.find(event => event._id == id)
 obtaindata(url)
-
 function cardCreator(param) {
   let container = document.getElementById('details-container-card')
   let div = document.createElement('div');

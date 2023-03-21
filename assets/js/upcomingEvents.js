@@ -1,7 +1,6 @@
 const url = "https://mindhub-xj03.onrender.com/api/amazing"
 
 async function obtaindata(url) {
-
     try {
         let response = await fetch(url)
         const data = await response.json()
@@ -11,10 +10,9 @@ async function obtaindata(url) {
         console.log(dataDate);
         let cardContainer = document.getElementById('futurecard')
         showCard(dataDate, cardContainer)
-
         //cheks
         let checkContainer = document.getElementById(`checkboxes`)
-        let arrsetOfEvent = new Set(data.events.map(event => event.category))
+        let arrsetOfEvent = new Set(dataDate.map(event => event.category))
         let arrEvent = [...arrsetOfEvent]
         console.log(arrsetOfEvent);
         showCheck(arrEvent, checkContainer)
@@ -25,17 +23,14 @@ async function obtaindata(url) {
         checkboxes.forEach(checkbox => checkbox.addEventListener('change', () => {
             checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
 
-            combineFilters(data.events, checkedInputs, sercher, cardContainer)
+            combineFilters(dataDate, checkedInputs, sercher, cardContainer)
         }))
         // serch 
         let inputText = document.getElementById('text-input')
         inputText.addEventListener('keyup', (e) => {
-
             sercher = e.target.value;
-            combineFilters(data.events, checkedInputs, sercher, cardContainer)
-
+            combineFilters(dataDate, checkedInputs, sercher, cardContainer)
         })
-
         let buttonRefresh = document.getElementById('refresh')
         buttonRefresh.addEventListener('click', location.reload())
     }
@@ -94,15 +89,12 @@ function filterArray(arrayString, listCard) {
         return listCard.filter(events => arrayString.includes(events.category))
     }
 }
-
 function readerSercher(textInput, listCard) {
     if (textInput == "") return listCard
     return listCard.filter(card => card.name.toLowerCase().includes(textInput.toLowerCase().trim()))
-
 }
 
 function combineFilters(array, arrayChecked, textSerch, container) {
-
     let cardFilterArray = filterArray(arrayChecked, array);
     let stringFilter = readerSercher(textSerch, cardFilterArray);
     showCard(stringFilter, container)

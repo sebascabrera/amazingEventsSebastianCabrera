@@ -1,55 +1,38 @@
 
 const url = "https://mindhub-xj03.onrender.com/api/amazing"
 async function obtaindata(url) {
-    
+
     try {
 
-        let response = await fetch(url)// trae promesa
-        //          //.then(response => console.log(response))
-        const data = await response.json() // aca estoy obteniendo el archivo json con el que voy a trabajar
-
+        let response = await fetch(url)
+        const data = await response.json()
         let cardContainer = document.getElementById('cardid')
         showCard(data.events, cardContainer)
-
         let checkContainer = document.getElementById(`checkboxes`)
-
         let arrsetOfEvent = new Set(data.events.map(event => event.category))
         let arrEvent = [...arrsetOfEvent]
         showCheck(arrEvent, checkContainer)
-
         //cheks
         let sercher = ""
         let checkboxes = document.querySelectorAll('input[type=checkbox]')
         let checkedInputs = []
         checkboxes.forEach(checkbox => checkbox.addEventListener('change', () => {
             checkedInputs = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(input => input.value)
-
             combineFilters(data.events, checkedInputs, sercher, cardContainer)
         }))
-
-        // serch 
-
         let inputText = document.getElementById('text-input')
         inputText.addEventListener('keyup', (e) => {
-
             sercher = e.target.value;
             combineFilters(data.events, checkedInputs, sercher, cardContainer)
-
         })
-
         let buttonRefresh = document.getElementById('refresh')
-        buttonRefresh.addEventListener('click', location.reload() )
-     
+        buttonRefresh.addEventListener('click', location.reload())
     }
     catch (error) {
         console.error(error);
     }
 }
 obtaindata(url)
-
-
-
-
 function showCheck(array, container) {
     let fragment2 = document.createDocumentFragment()
     for (let i of array) {
@@ -61,14 +44,12 @@ function showCheck(array, container) {
     }
     container.appendChild(fragment2)
 }
-
 function showCard(arr, container) {
     if (arr.length > 0) {
         let fragment = document.createDocumentFragment()
         container.innerHTML = ''
         for (let i of arr) {
             let div = document.createElement(`div`)
-
             div.classList.add("card")
             div.innerHTML = `<img src=${i.image}class="card-img-top" alt="Event image">
           <div class="card-body">
@@ -92,10 +73,7 @@ function showCard(arr, container) {
       </div>`
         container.appendChild(div)
     }
-
 }
-
-
 function filterArray(arrayString, listCard) {
     //return arrayString.length > 0? listCard.filter(events => arrayString.includes(events.category)):listCard;
     if (arrayString.length == 0) {
@@ -104,15 +82,11 @@ function filterArray(arrayString, listCard) {
         return listCard.filter(events => arrayString.includes(events.category))
     }
 }
-
 function readerSercher(textInput, listCard) {
     if (textInput == "") return listCard
     return listCard.filter(card => card.name.toLowerCase().includes(textInput.toLowerCase().trim()))
-
 }
-
 function combineFilters(array, arrayChecked, textSerch, container) {
-
     let cardFilterArray = filterArray(arrayChecked, array);
     let stringFilter = readerSercher(textSerch, cardFilterArray);
     showCard(stringFilter, container)
